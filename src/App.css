@@ -1,42 +1,83 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+/**
+ * App.css - Globale Styles für die Anwendung
+ * 
+ * Diese Datei enthält zusätzliche Styles, die nicht durch
+ * TailwindCSS und DaisyUI abgedeckt werden.
+ */
+
+/* Custom Font Import */
+@font-face {
+  font-family: "Great Vibes";
+  src: url("/GreatVibes-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* Utility-Klasse für Textbegrenzung auf mehrere Zeilen */
+.line-clamp-1 {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
-.card {
-  padding: 2em;
+/* Smooth Scroll-Verhalten */
+html {
+  scroll-behavior: smooth;
 }
 
-.read-the-docs {
-  color: #888;
+/* Verbesserte Fokus-Sichtbarkeit für Barrierefreiheit */
+*:focus-visible {
+  outline: 2px solid oklch(var(--p));
+  outline-offset: 2px;
+}
+
+/* Hintergrundbild für Suchergebnis-Bereich */
+.search-results-bg {
+  background-image: url("/banner.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  padding: 3rem 2rem;
+  border-radius: 0.5rem;
+  position: relative;
+}
+
+/* Styling für Header-Text mit Custom Font */
+.header-title,
+.header-subtitle {
+  font-family: "Great Vibes", cursive;
+}
+
+/* Semi-transparenter Overlay für bessere Lesbarkeit */
+.search-results-bg::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 0.5rem;
+  pointer-events: none;
+}
+
+/* Inhalte müssen über dem Overlay liegen */
+.search-results-bg > * {
+  position: relative;
+  z-index: 1;
 }
